@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <quiz-card />
+    <info-msg />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import QuizCard from './components/QuizCard.vue';
+import InfoMsg from './components/InfoMsg.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    QuizCard,
+    InfoMsg,
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+* {
+ font-family: 'Jeju Gothic', sans-serif;
+}
+
+html, body, div.app {
+  height: 100%;
+  margin: 0;
+}
+</style>
+
+<style scoped>
+div.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: #fafafa;
 }
 </style>
