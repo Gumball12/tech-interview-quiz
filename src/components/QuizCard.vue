@@ -7,13 +7,14 @@
 
     <template v-else>
       <button @click="window.location.reload()">다른 문제</button>
-      <p class="answer" v-text="answer"/>
+      <p class="answer" v-html="answer_md"/>
     </template>
   </div>
 </template>
 
 <script>
 import yaml from 'yaml';
+import MarkdownIt from 'markdown-it';
 
 function getRandomElement(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
@@ -29,6 +30,9 @@ export default {
   computed: {
     window() {
       return window;
+    },
+    answer_md() {
+      return new MarkdownIt().render(this.answer);
     },
   },
   async mounted() {
