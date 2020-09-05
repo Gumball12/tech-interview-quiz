@@ -32,6 +32,8 @@ export default {
 
 * {
  font-family: 'Jeju Gothic', sans-serif;
+ line-height: 1.5em;
+ word-break: keep-all;
 }
 
 html, body {
