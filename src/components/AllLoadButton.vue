@@ -1,6 +1,6 @@
 <template>
   <section @click="$emit('change')">
-    <button>{{ state ? '하나의 문제 보기' : '모든 문제만 보기' }}</button>
+    <button>{{ state ? '원래대로' : '모든 문제 보기' }}</button>
   </section>
 </template>
 
