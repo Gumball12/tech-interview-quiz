@@ -36,7 +36,13 @@ export default {
     },
   },
   async mounted() {
-    const quizSrc = 'https://raw.githubusercontent.com/Gumball12/tech-interview-quiz-items/master/quiz.yml';
+    let quizSrc;
+
+    if (process.env.NODE_ENV === 'production') {
+      quizSrc = 'https://raw.githubusercontent.com/Gumball12/tech-interview-quiz-items/master/quiz.yml';
+    } else if (process.env.NODE_ENV === 'development') {
+      quizSrc = '/quiz.yml';
+    }
 
     const raw = await (await fetch(quizSrc)).text();
     const data = yaml.parse(raw);
