@@ -1,7 +1,9 @@
 <template>
   <div class="app">
-    <quiz-card />
-    <info-msg />
+    <main>
+      <quiz-card />
+      <info-msg />
+    </main>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ export default {
  font-family: 'Jeju Gothic', sans-serif;
 }
 
-html, body, div.app {
+html, body {
   height: 100%;
   margin: 0;
 }
@@ -33,10 +35,15 @@ html, body, div.app {
 
 <style scoped>
 div.app {
+  height: 100%;
+  background-color: #fafafa;
+}
+
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  background-color: #fafafa;
+  min-height: 100%;
 }
 </style>
