@@ -1,22 +1,29 @@
 <template>
   <div class="app">
+    <info-msg />
+
     <main>
-      <quiz-card />
-      <info-msg />
+      <quiz-card-renderer :is-all-load="isAllLoad" />
+      <all-load-button @change="isAllLoad = !isAllLoad" :state="isAllLoad" />
     </main>
   </div>
 </template>
 
 <script>
-import QuizCard from './components/QuizCard.vue';
+import QuizCardRenderer from './components/QuizCardRenderer.vue';
 import InfoMsg from './components/InfoMsg.vue';
+import AllLoadButton from './components/AllLoadButton.vue';
 
 export default {
   name: 'App',
   components: {
-    QuizCard,
+    QuizCardRenderer,
     InfoMsg,
+    AllLoadButton,
   },
+  data: () => ({
+    isAllLoad: false,
+  }),
 };
 </script>
 
@@ -31,12 +38,27 @@ html, body {
   height: 100%;
   margin: 0;
 }
+
+button {
+  border: none;
+  padding: 10px;
+  background: transparent;
+  text-decoration: underline;
+}
+
+button:focus {
+  outline: 0;
+}
+
+hr {
+  border: 1px solid #ccc;
+  border-bottom: 0;
+}
 </style>
 
 <style scoped>
 div.app {
   height: 100%;
-  background-color: #fafafa;
 }
 
 main {
@@ -45,5 +67,7 @@ main {
   justify-content: center;
 
   min-height: 100%;
+
+  background-color: #fafafa;
 }
 </style>

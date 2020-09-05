@@ -1,31 +1,29 @@
 <template>
-  <div class="card">
-    <p class="title" v-html="title" />
+  <article>
+    <h1 v-html="title" />
 
-    <button v-if="!isAnswerOpen"
-      @click="isAnswerOpen = true">답 확인</button>
+    <div class="button" v-if="!isAnswerOpen">
+      <button @click="isAnswerOpen = true">답 확인</button>
+    </div>
 
     <template v-else>
       <hr>
+
       <div v-html="answer"/>
-      <button @click="window.location.reload()">다른 문제</button>
+
+      <div class="button">
+        <button @click="window.location.reload()">다른 문제</button>
+      </div>
     </template>
-  </div>
+  </article>
 </template>
 
 <script>
-import yaml from 'yaml';
 import MarkdownIt from 'markdown-it';
 
-function getRandomElement(arr) {
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex];
-}
-
 export default {
+  props: ['title-raw', 'answer-raw'],
   data: () => ({
-    titleRaw: '',
-    answerRaw: '',
     isAnswerOpen: false,
   }),
   computed: {
@@ -33,33 +31,20 @@ export default {
       return window;
     },
     answer() {
-      return new MarkdownIt().render(this.answerRaw);
+      return new MarkdownIt().render(this.answerRaw || '');
     },
     title() {
-      return new MarkdownIt().render(this.titleRaw);
+      return new MarkdownIt().render(this.titleRaw || '');
     },
-  },
-  async mounted() {
-    let quizSrc;
-
-    if (process.env.NODE_ENV === 'production') {
-      quizSrc = 'https://raw.githubusercontent.com/Gumball12/tech-interview-quiz-items/master/quiz.yml';
-    } else if (process.env.NODE_ENV === 'development') {
-      quizSrc = '/quiz.yml';
-    }
-
-    const raw = await (await fetch(quizSrc)).text();
-    const data = yaml.parse(raw);
-    const randomData = getRandomElement(data);
-
-    [this.titleRaw, this.answerRaw] = randomData;
   },
 };
 </script>
 
 <style scoped>
-div.card {
-  align-self: center;
+article {
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
 
   max-width: 660px;
 
@@ -72,11 +57,7 @@ div.card {
   background-color: #fefefe;
 }
 
-div.card > p.title {
-  font-size: 32px;
-}
-
-div.card ::v-deep code {
+article ::v-deep code {
   background: #eee;
   color: #ff7f00;
 
@@ -85,15 +66,8 @@ div.card ::v-deep code {
   padding-right: 2px;
 }
 
-div.card button {
-  border: none;
-  float: right;
-  padding: 10px;
-  background: transparent;
-  text-decoration: underline;
-}
-
-div.card button:focus {
-  outline: 0;
+article div.button {
+  width: 100%;
+  text-align: right;
 }
 </style>
