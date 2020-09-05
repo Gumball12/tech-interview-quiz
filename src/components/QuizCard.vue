@@ -6,8 +6,9 @@
       @click="isAnswerOpen = true">답 확인</button>
 
     <template v-else>
+      <hr>
+      <div v-html="answer_md"/>
       <button @click="window.location.reload()">다른 문제</button>
-      <p class="answer" v-html="answer_md"/>
     </template>
   </div>
 </template>
@@ -57,20 +58,30 @@ export default {
 div.card {
   align-self: center;
 
-  width: 660px;
+  max-width: 660px;
 
-  box-shadow: 0px 3px 8px -1px #ccc;
+  padding: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
 
-  padding-left: 16px;
-  padding-bottom: 12px;
-  padding-top: 8px;
+  border-radius: 5px;
 
-  text-align: center;
-
-  border-radius: 3px;
+  background-color: #fefefe;
 }
 
 div.card > p.title {
   font-size: 32px;
+}
+
+div.card button {
+  border: none;
+  float: right;
+  padding: 10px;
+  background: transparent;
+  text-decoration: underline;
+}
+
+div.card button:focus {
+  outline: 0;
 }
 </style>
