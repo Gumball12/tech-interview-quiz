@@ -5,3 +5,6 @@
 -
   - title 2
   - answer 2
+
+# import
+- ${/quiz2.yml}
