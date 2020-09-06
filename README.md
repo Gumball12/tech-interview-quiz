@@ -24,7 +24,7 @@ yarn build
 
 ## 커스텀 퀴즈
 
-`/public/quiz.yml` 파일을 통해 local server에서 퀴즈를 임의로 만들어볼 수 있어요
+[`/public/quiz.yml`](./public/quiz.yml) 파일을 통해 local server에서 퀴즈를 임의로 만들어볼 수 있어요
 
 퀴즈는 다음과 같이 두 개의 방식으로 정의가 가능합니다
 
@@ -39,6 +39,13 @@ yarn build
 
 # 타입 2
 - ['제목', '내용']
+
+# 퀴즈 파일 import
+- ${/quiz2.yml}
 ```
 
 퀴즈의 제목과 내용은 마크다운을 지원해요
+
+또한 `${~}` 문법을 통해 다른 퀴즈 파일을 import 할 수 있도록 구현했습니다
+
+자세한 것은 [quiz 파일](./public/quiz.yml)을 참고해주세요
