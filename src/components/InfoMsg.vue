@@ -4,7 +4,9 @@
       <a target="_blank" href="https://github.com/Gumball12/tech-interview-quiz">@GitHub</a>
     </p>
     <p>
-      <a target="_blank" href="https://github.com/Gumball12/tech-interview-quiz-items">@Add-Items</a>
+      <a target="_blank" href="https://github.com/Gumball12/tech-interview-quiz-items"
+        >@Add-Items</a
+      >
     </p>
   </header>
 </template>

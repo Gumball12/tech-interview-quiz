@@ -31,12 +31,13 @@ export default {
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 * {
- font-family: 'Jeju Gothic', sans-serif;
- line-height: 1.5em;
- word-break: keep-all;
+  font-family: 'Jeju Gothic', sans-serif;
+  line-height: 1.5em;
+  word-break: keep-all;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }

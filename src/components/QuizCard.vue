@@ -7,9 +7,9 @@
     </div>
 
     <template v-else>
-      <hr>
+      <hr />
 
-      <div v-html="answer"/>
+      <div v-html="answer" />
 
       <div class="button">
         <button @click="window.location.reload()">다른 문제</button>

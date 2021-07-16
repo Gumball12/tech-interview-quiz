@@ -1,11 +1,14 @@
 <template>
   <section>
-    <quiz-card v-if="!isAllLoad"
-      :title-raw="randomData[0]" :answer-raw="randomData[1]" />
+    <quiz-card v-if="!isAllLoad" :title-raw="randomData[0]" :answer-raw="randomData[1]" />
 
     <template v-else>
-      <quiz-card v-for="([title, answer], ind) in data" :key="ind"
-        :title-raw="title" :answer-raw="answer" />
+      <quiz-card
+        v-for="([title, answer], ind) in data"
+        :key="ind"
+        :title-raw="title"
+        :answer-raw="answer"
+      />
     </template>
   </section>
 </template>
