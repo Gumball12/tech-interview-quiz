@@ -21,25 +21,22 @@ import QuizCard from './QuizCard.vue';
 const base = process.env.NODE_ENV === 'production' ? 'https://raw.githubusercontent.com/Gumball12/tech-interview-quiz-items/master' : '';
 
 async function recursiveImport(raw) {
-  const importStmts = raw.match(/^-[\s]*?\${.*?}$/gm);
+  const importStmts = raw.match(/^-\s*?\${.*?}$/gm);
 
   if (importStmts === null) {
     return raw;
   }
 
-  await new Promise((resolve) => {
-    importStmts.forEach(async (importStmt, ind) => {
-      const importSrc = `${base}${importStmt.match(/\${(.*?)}/)[1]}`;
-      const importRaw = await (await fetch(importSrc)).text();
+  // eslint-disable-next-line no-restricted-syntax
+  for (const importStmt of importStmts) {
+    const uri = importStmt.match(/\${(.*?)}/)[1];
+    const importSrc = `${base}${uri}`;
+    // eslint-disable-next-line no-await-in-loop
+    const importRaw = await (await fetch(importSrc)).text();
 
-      // eslint-disable-next-line
-      raw = raw.replace(importStmt, importRaw);
-
-      if (ind === importStmts.length - 1) {
-        resolve();
-      }
-    });
-  });
+    // eslint-disable-next-line no-param-reassign
+    raw = raw.replace(importStmt, importRaw);
+  }
 
   return recursiveImport(raw);
 }
